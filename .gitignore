@@ -1,0 +1,41 @@
+# python
+__pycache__/
+*.py[cod]
+*.so
+
+# virtual environments
+.venv/
+venv/
+env/
+
+# env files
+.env
+.env.*
+!.env.example
+
+# jupyter
+.ipynb_checkpoints/
+
+# build and packaging
+build/
+dist/
+*.egg-info/
+
+# test and cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# os/editor
+.DS_Store
+.vscode/
+
+# project artifacts and data
+artifacts/
+data/
+
+# temporary files
+*.log
+*.tmp

@@ -1,0 +1,17 @@
+{
+  "data": [
+    {
+      "age": 44,
+      "sex": "F",
+      "chest pain type": "ATA",
+      "resting bp s": 126,
+      "cholesterol": 198,
+      "fasting bs": 0,
+      "resting ecg": "ST",
+      "max hr": 170,
+      "exercise angina": "N",
+      "oldpeak": 0.3,
+      "st slope": "Up"
+    }
+  ]
+}

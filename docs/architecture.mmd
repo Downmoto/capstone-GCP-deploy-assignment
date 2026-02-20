@@ -1,0 +1,13 @@
+flowchart LR
+    I[docker hub or artifact registry] --> B[cloud run fastapi service]
+    B --> S[startup lifespan]
+    S --> L[load preprocessor and model artifacts once]
+
+    A[client] -->|post /predict + x-api-key| C[api key validation]
+    C --> V[request schema validation]
+    V --> P[preprocess request payload]
+    P --> R[predict + probability]
+    R --> A
+
+    B -.handles request path.-> C
+    B --> G[cloud logging]
