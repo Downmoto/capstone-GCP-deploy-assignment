@@ -32,8 +32,7 @@ htmlcov/
 .DS_Store
 .vscode/
 
-# project artifacts and data
-artifacts/
+# project data
 data/
 
 # temporary files
