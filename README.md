@@ -9,8 +9,8 @@ this repository contains an end-to-end machine learning deployment project using
 - `src/security.py`: api-key check using `x-api-key`
 - `artifacts/`: saved preprocessor and best model
 - `Dockerfile`: container image definition
-- `scripts/deploy_cloud_run.sh`: gcp cloud run deployment helper
-- `scripts/sample_request.json`: sample payload for testing
+- `scripts/random_predict.py`: script to test predict endpoint using cached data at random
+- `scripts/sample_request_*.json`: sample payloads for testing
 
 ## dataset setup
 
