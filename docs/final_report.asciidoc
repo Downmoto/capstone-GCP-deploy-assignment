@@ -152,27 +152,27 @@ Containerization is implemented with Docker:
 
 === Challenge 1: train/serve schema mismatch
 
-Issue: source dataset columns and API request keys can differ.
+I ran into a schema mismatch early when I moved from notebook exploration to API serving. The Kaggle dataset column names (for example `ChestPainType`, `RestingBP`) did not match the JSON field naming I wanted in the API payload.
 
-Resolution: standardized column names in training and used explicit Pydantic aliases in API schemas.
+How I solved it: I standardized column names in the training pipeline and used explicit Pydantic aliases in the API schema. This made the data contract deterministic between training and inference.
 
 === Challenge 2: unseen categorical values at inference
 
-Issue: new categorical values can break one-hot encoding.
+I also had to handle the case where inference-time categorical values might differ from what the model saw during training.
 
-Resolution: set `OneHotEncoder(handle_unknown="ignore")` in preprocessing pipeline.
+How I solved it: I configured `OneHotEncoder(handle_unknown="ignore")` in the preprocessing pipeline, which prevented runtime crashes from previously unseen categories.
 
 === Challenge 3: secure API key handling
 
-Issue: keys should not be hardcoded in source or Dockerfile.
+During deployment hardening, I needed to secure the endpoint without exposing secrets in source code or container layers.
 
-Resolution: read `API_KEY` from runtime environment variables and keep only `.env.example` as template.
+How I solved it: I moved key handling to runtime environment variables (`API_KEY`) and kept only `.env.example` as a template. This kept secrets out of the codebase while preserving reproducibility.
 
 === Challenge 4: container architecture compatibility
 
-Issue: Cloud Run deployment failed when image did not include `linux/amd64`.
+This was the most concrete deployment blocker I faced: my first Cloud Run deployment failed because the image built on Apple Silicon did not provide a compatible `linux/amd64` manifest.
 
-Resolution: build and push amd64 image with `docker buildx --platform linux/amd64`.
+How I solved it: I rebuilt and pushed the container with `docker buildx --platform linux/amd64`, then redeployed successfully.
 
 == Conclusion and Future Improvements
 
