@@ -72,35 +72,6 @@ docker build -t heart-failure-api:latest .
 docker run --rm -p 8080:8080 -e API_KEY="dev-secret-key" heart-failure-api:latest
 ```
 
-## deploy to gcp cloud run
-
-prerequisites:
-
-- gcloud cli authenticated
-- billing enabled on gcp project
-
-set variables and deploy:
-
-```bash
-export PROJECT_ID="your-project-id"
-export REGION="us-central1"
-export SERVICE_NAME="heart-failure-api"
-export IMAGE_NAME="heart-failure-api"
-export API_KEY="prod-strong-key"
-
-bash scripts/deploy_cloud_run.sh
-```
-
-test deployed service:
-
-```bash
-export ENDPOINT_URL="https://<your-cloud-run-url>"
-curl -X POST "$ENDPOINT_URL/predict" \
-  -H "Content-Type: application/json" \
-  -H "x-api-key: prod-strong-key" \
-  -d @scripts/sample_request.json
-```
-
 ## api contract
 
 request body:
@@ -133,14 +104,3 @@ response body:
   "probabilities": [0.13]
 }
 ```
-
-## report checklist (for final pdf)
-
-- executive summary
-- ml problem + dataset description
-- preprocessing + model training + evaluation metrics
-- deployment architecture diagram
-- cloud deployment screenshots
-- api call screenshots (success + auth failure)
-- challenges and mitigation
-- conclusion and future work
