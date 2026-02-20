@@ -2,6 +2,10 @@
 
 this repository contains an end-to-end machine learning deployment project using the kaggle heart failure prediction dataset.
 
+## Author
+
+Arad Fadaei
+
 ## project structure
 
 - `training/train.py`: trains and evaluates two models, then saves artifacts
