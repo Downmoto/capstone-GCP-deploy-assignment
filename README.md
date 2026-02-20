@@ -62,7 +62,7 @@ prediction request:
 curl -X POST "http://127.0.0.1:8080/predict" \
   -H "Content-Type: application/json" \
   -H "x-api-key: dev-secret-key" \
-  -d @scripts/sample_request.json
+  -d @scripts/sample_request_01.json
 ```
 
 ## run in docker
